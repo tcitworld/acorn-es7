@@ -9,16 +9,24 @@
     "type": "git",
     "url": "git://github.com/angelozerr/acorn-es7.git"
   },
-  "scripts": {
-  	"publish": "node ./scripts/git-tag.js",
-    "test": "node ./test/all.js"
-  },
   "dependencies": {
-    "acorn": "^2.6.4"
+    "acorn": "^6.1.1"
+  },
+  "scripts": {
+    "test": "mocha --require @babel/polyfill --require @babel/register \"test/**/*.js\""
   },
   "keywords": [
     "Acorn",
     "ES7",
     "Decorator"
-  ]
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/polyfill": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/register": "^7.4.0",
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2"
+  }
 }
