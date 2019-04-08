@@ -1,19 +1,22 @@
 {
-  "name": "acorn-es7",
+  "name": "acorn-decorators",
   "license": "MIT",
   "version": "0.1.0",
-  "main": "acorn-es7.js",
+  "main": "src/index.js",
   "author": "Angelo ZERR <angelo.zerr@gmail.com>",
   "description": "ES7 decorators support for Acorn.",
   "repository": {
     "type": "git",
-    "url": "git://github.com/angelozerr/acorn-es7.git"
+    "url": "git://github.com/tcitworld/acorn-es7.git"
   },
+  "homepage": "https://github.com/tcitworld/acorn-es7",
   "dependencies": {
-    "acorn": "^6.1.1"
+    "@types/acorn": "^4.0.5",
+    "acorn": "^6.1.1",
+    "typescript": "^3.4.2"
   },
   "scripts": {
-    "test": "mocha --require @babel/polyfill --require @babel/register \"test/**/*.js\""
+    "test": "mocha -r ts-node/register -r @babel/polyfill -r @babel/register \"test/**/*.js\""
   },
   "keywords": [
     "Acorn",
@@ -22,11 +25,15 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.4.3",
+    "@babel/parser": "^7.4.3",
     "@babel/plugin-proposal-class-properties": "^7.4.0",
     "@babel/polyfill": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
     "@babel/register": "^7.4.0",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
     "chai": "^4.2.0",
-    "mocha": "^6.0.2"
+    "mocha": "^6.0.2",
+    "ts-node": "^8.0.3"
   }
 }
