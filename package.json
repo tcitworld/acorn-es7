@@ -2,7 +2,7 @@
   "name": "acorn-decorators",
   "license": "MIT",
   "version": "0.1.0",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "author": "Angelo ZERR <angelo.zerr@gmail.com>",
   "description": "ES7 decorators support for Acorn.",
   "repository": {
@@ -16,7 +16,8 @@
     "typescript": "^3.4.2"
   },
   "scripts": {
-    "test": "mocha -r ts-node/register -r @babel/polyfill -r @babel/register \"test/**/*.js\""
+    "test": "mocha -r ts-node/register -r @babel/polyfill -r @babel/register \"test/**/*.js\"",
+    "build": "tsc"
   },
   "keywords": [
     "Acorn",

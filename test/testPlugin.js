@@ -8,7 +8,7 @@ export default function testPlugin(code) {
     try {
         result = Parser.parse(code, {
             ecmaVersion: 8,
-            locations: false,
+            locations: true,
             ranges: false,
             sourceType: 'module',
         });

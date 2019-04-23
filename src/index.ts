@@ -1,7 +1,7 @@
 import { tokTypes as tt } from 'acorn';
 import {TokenType} from "acorn/dist/acorn";
 
-export const DecoratorKey = 'Decorator';
+const DecoratorKey = 'Decorator';
 const at = new TokenType('@', { beforeExpr: true});
 
 export default function decorator(Parser: any) {
@@ -10,7 +10,12 @@ export default function decorator(Parser: any) {
 
     parseStatement(context: any, topLevel: any, exports: any) {
       if (this.type === at) {
-        this.decorators.push(this.parseDecorator);
+        const node = this.startNode();
+        this.next();
+        node.expression = this.parseMaybeAssign();
+        const finishedNode = this.finishNode(node, DecoratorKey);
+
+        this.decorators.push(finishedNode);
       }
       if (this.type === tt._class) {
         const node = super.parseStatement(context, topLevel, exports);
@@ -29,13 +34,6 @@ export default function decorator(Parser: any) {
         return this.finishToken(at);
       }
       return super.getTokenFromCode(code);
-    }
-
-    parseDecorator(): any {
-      const node = this.startNode();
-      this.next();
-      node.expression = this.parseMaybeAssign();
-      return this.finishNode(node, DecoratorKey);
     }
   }
 }

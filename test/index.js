@@ -7,7 +7,12 @@ import testPlugin from './testPlugin';
 describe('acorn-es7', () => {
     it('works', () => {
         console.log('hello');
-        const code = '@coucou export class Coucou {}';
+        const code = `
+@Component({
+  prop: "toto"
+})
+export class Coucou {}
+`;
         const acornAst = testPlugin(code);
         console.log(JSON.stringify(acornAst));
         const babelAst = parse(code, {
@@ -15,6 +20,6 @@ describe('acorn-es7', () => {
                 sourceType: "module"
             });
         console.log(JSON.stringify(babelAst));
-        expect(acornAst).eq(babelAst);
+        expect(babelAst.program).to.deep.equal(acornAst);
     })
 });
